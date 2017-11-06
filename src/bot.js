@@ -101,13 +101,6 @@ controller.on('direct_message', function(bot, message){
 	}
 });
 
-controller.hears('', ['ambient', 'direct_mention', 'mention'], function(bot, message){
-//console.log(message);
-//	bot.getMessageUser(message, (err, user)=>{
-//		console.log(user.username);
-//	});
-});
-
 mBot.startRTM(function(err,bot,payload) {
 	if (err) {
 		console.log(err);
