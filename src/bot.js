@@ -3,6 +3,7 @@ const {PORT, SCOPE, TOKEN, ID} = process.env;
 const controller = require('botkit').slackbot({
     clientId: ID,
     scopes: [SCOPE],
+    retry: Number.POSITIVE_INFINITY
 });
 const welcomeMessage = {
 	as_user: true,
