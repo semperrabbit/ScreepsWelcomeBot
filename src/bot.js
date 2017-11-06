@@ -1,5 +1,9 @@
 require('dotenv').config();
 const {PORT, SCOPE, TOKEN, ID} = process.env;
+const controller = require('botkit').slackbot({
+    clientId: ID,
+    scopes: [SCOPE],
+});
 const welcomeMessage = {
 	as_user: true,
 	link_names: true,
@@ -11,67 +15,64 @@ The community here is usually a friendly and helpful group, but should you run i
 	attachments: [
 		{
 			title: 'Do:',
-			text: `* Check #announcements for updates, but do not respond to post or attempt discussion in that channel. You may react to posts with emojis
-* Discuss announcements in #announcements-any
-* Ask for assistance in #help, not #general
-* Ask permission before removing pinned posts or modifying integrations
-* Try to keep the discussions in line with the channel you\'re in`,
+			fields: [
+				{value: 'Check #announcements for updates, but do not respond to post or attempt discussion in that channel. You may react to posts with emojis'},
+				{value: 'Discuss announcements in #announcements-any'},
+				{value: 'Ask for assistance in #help, not #general'},
+				{value: 'Ask permission before removing pinned posts or modifying integrations'},
+				{value: 'Try to keep the discussions in line with the channel you\'re in'},
+			],
+			mrkdwn_in: ['fields'],
 			color: '#40C040',
 		},
 		{
 			title: 'Do Not:',
-			text: `* Remove others' pinned posts without permission
-* Remove/reconfigure others' integrations without permissions
-* Disrespect people who were asking for help in #help
-* Threaten physical injury or harass anyone
-* Refuse to disengage from serious arguments when asked to by an admin
-* Repeatedly provoke serious arguments
-* Engage in sexual harassment`,
-			color: '#FF0000',
+			fields: [
+				{value: 'Remove others\' pinned posts without permission'},
+				{value: 'Remove/reconfigure others\' integrations without permissions'},
+				{value: 'Disrespect people who were asking for help in #help'},
+				{value: 'Threaten physical injury or harass anyone'},
+				{value: 'Refuse to disengage from serious arguments when asked to by an admin'},
+				{value: 'Repeatedly provoke serious arguments'},
+				{value: 'Engage in sexual harassment'},
+			],
+			mrkdwn_in: ['fields'],
+			color: '#C02020',
 		},
 		{
 			title: 'Moderators',
-			text: `@atavus
-@daboross
-@dissi  (community manager)
-@o4kapuk(community manager)
-@semperrabbit`,
+			fields: [
+				{value: '@atavus'},
+				{value: '@daboross'},
+				{value: '@dissi  (community manager)'},
+				{value: '@o4kapuk(community manager)'},
+				{value: '@semperrabbit'},
+//				{value: ''},
+//				{value: ''},
+//				{value: ''},
+//				{value: ''},
+			],
+			mrkdwn_in: ['fields'],
 			color: '#74c8ed',
 		},
 		{
 			title: 'Helpful Links:',
-			text: `*API*: http://docs.screeps.com/api/
-*Game source code*: https://github.com/Screeps
-*Alliances*: http://www.leagueofautomatednations.com
-*Wiki*: https://wiki.screepspl.us
-*Third party tools*: http://docs.screeps.com/third-party.html
-*Screeps World*: https://screepsworld.com/
-*Spawning room recommendation*: https://screepsworld.com/2017/07/warning-novice-zones-are-lies-where-to-spawn-as-a-noob/`,
+			fields: [
+				{value: '*API*: http://docs.screeps.com/api/'},
+				{value: '*Game source code*: https://github.com/Screeps'},
+				{value: '*Alliances*: http://www.leagueofautomatednations.com'},
+				{value: '*Wiki*: https://wiki.screepspl.us'},
+				{value: '*Third party tools*: http://docs.screeps.com/third-party.html'},
+				{value: '*Screeps World*: https://screepsworld.com/'},
+				{value: '*Spawning room recommendation*: https://screepsworld.com/2017/07/warning-novice-zones-are-lies-where-to-spawn-as-a-noob/'},
+			],
+			mrkdwn_in: ['fields'],
 		}],
 };
 
-var controller = require('botkit').slackbot({
-    clientId: ID,
-    scopes: [SCOPE],
-});
-
-var mBot = controller.spawn({
+const mBot = controller.spawn({
 	token: TOKEN
 })
-
-controller.on('direct_message', function(bot, message){
-	try{
-		controller.storage.users.get(message.user, function(err, user) {
-			if (user && user.name) {
-				bot.reply(message, welcomeMessage);
-			} else {
-				bot.reply(message, welcomeMessage);
-			}
-		});
-	}catch(e){
-		console.log(e);
-	}
-});
 
 controller.on('team_join', function(bot, event){
 	try{ // say hello in #general
