@@ -1,26 +1,15 @@
-
-
-#ScreepsSlackBot
-
-
+# ScreepsSlackBot
 This slack bot is designed to say hello to new [Screeps Slack](http://chat.screeps.com/) users. It uses [BotKit](https://www.npmjs.com/package/botkit) and the [Slack Real Time Messaging API](https://api.slack.com/rtm) to greet new users in the `#general` channel, and send them a hello message including *Do's*, *Do Not's*, *helpful links* and a *list of moderators* in a direct message.
 
 It is designed to be a configuration under the [Bots](https://screeps.slack.com/apps/A0F7YS25R-bots) app custom integration.
 
 
-## NPM Requirements
-
-
+### NPM Requirements
 - dotenv (v4.0.0 or higher)
 - botkit (v0.6.5 or higher)
 
-
-##Setup
-
-
+### Setup
 #### Create a `Bots `configuration in Slack
-
-
 1. Add the [Bots](https://screeps.slack.com/apps/A0F7YS25R-bots) slack app to your workspace
 1. Click on the Bots app under Custom Integrations
 ![Bots page](https://imgur.com/HRhvm4q.png)
@@ -32,8 +21,6 @@ It is designed to be a configuration under the [Bots](https://screeps.slack.com/
 
 
 #### Run locally
-
-
 1. Get the code
     * Clone this repo and run `npm install`
     * If you edit this for another slack, you will need to edit your message in [message.js](https://github.com/semperrabbit/ScreepsWelcomeBot/blob/master/src/message.js). 
@@ -46,9 +33,7 @@ It is designed to be a configuration under the [Bots](https://screeps.slack.com/
 1. Start the app (`npm start`)
 
 
-## Bot actions
-
-
+### Bot actions
 1. On a `team_join` event, the bot will greet the new user in #general
 ![](https://imgur.com/7eYWC1W.png)
 1. On a `team_join` event, the bot will send a [message](https://github.com/semperrabbit/ScreepsWelcomeBot/blob/master/src/message.js) to the new user in a DM
@@ -57,9 +42,7 @@ It is designed to be a configuration under the [Bots](https://screeps.slack.com/
 ![welcome DM](https://imgur.com/j2K3cX9.png)
 
 
-## Logging
-
-
+### Logging
 The bot will show a log of all the RTM actions, based off of the default logging in BotKit.
 
     U:\profile\Documents\GitHub\ScreepsWelcomeBot>npm start
