@@ -1,0 +1,19 @@
+{
+  "name": "ScreepsWelcomeBot",
+  "private": true,
+  "version": "1.0.0",
+  "description": "This is a WelcomeBot for the Screeps Slack community.",
+  "engines": {
+    "node": ">= 6.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
+  },
+  "author": "@semperrabbit",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "express-slack": "^1.0.11",
+  }
+}
