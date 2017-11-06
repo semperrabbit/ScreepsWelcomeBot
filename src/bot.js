@@ -1,5 +1,5 @@
 require('dotenv').config();
-const {PORT, SCOPE, TOKEN, ID} = process.env;
+const {PORT, SCOPE, TOKEN, ID, GENERAL} = process.env;
 const controller = require('botkit').slackbot({
     clientId: ID,
     scopes: [SCOPE],
@@ -14,7 +14,7 @@ const welcomeMessage = require(__dirname + '/message.js')
 
 controller.on('team_join', function(bot, event){
 	try{ // say hello in #general
-		mBot.reply({channel: 'C0HJGK1L2', user: event.user.id}, // hardcode id for #general
+		mBot.reply({channel: GENERAL, user: event.user.id}, // fake the funk for `message` param
 			`Welcome, ${event.user.profile.display_name}. :slightly_smiling_face::wave:`
 		);
 	}catch(e){

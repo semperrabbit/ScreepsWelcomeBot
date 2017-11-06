@@ -1,3 +1,6 @@
+// the `fields` values do not truncate messages with more than 5 lines with "Show More..."
+// if all of your attachments are less than 5 lines, you can replace this with the `text` value
+
 const welcomeMessage = {
 	as_user: true,
 	link_names: true,
