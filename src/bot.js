@@ -14,7 +14,7 @@ const welcomeMessage = require(__dirname + '/message.js')
 
 controller.on('team_join', function(bot, event){
 	try{ // say hello in #general
-		mBot.reply({channel: GENERAL, user: event.user.id}, // fake the funk for `message` param
+		mBot.replyWithTyping({channel: GENERAL, user: event.user.id}, // fake the funk for `message` param
 			`Welcome, ${event.user.profile.display_name}. :slightly_smiling_face::wave:`
 		);
 	}catch(e){
