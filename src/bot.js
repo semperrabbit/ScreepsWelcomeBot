@@ -14,9 +14,24 @@ const welcomeMessage = require(__dirname + '/message.js')
 
 controller.on('team_join', function(bot, event){
 	try{ // say hello in #general
-		mBot.replyWithTyping({channel: GENERAL, user: event.user.id}, // fake the funk for `message` param
-			`Welcome, ${event.user.profile.display_name}. :slightly_smiling_face::wave:`
-		);
+		if(event.user.profile.display_name != '') {
+			mBot.replyWithTyping({channel: GENERAL, user: event.user.id}, // fake the funk for `message` param
+				`Welcome, ${event.user.profile.display_name}. :slightly_smiling_face::wave:`
+			);
+		} else {
+			mBot.getMessageUser({channel: GENERAL, user: event.user.id}, // fake the funk for `message` param
+				(err, profile)=>{ // try to get the user name if event is missing it
+					if(err){ throw new Error(err); }
+					if(profile.username != '') {
+						mBot.replyWithTyping({channel: GENERAL, user: profile.id}, // fake the funk
+							`Welcome, ${profile.username}. :slightly_smiling_face::wave:`);			
+					} else { // no username in event or user info inquiry.
+						mBot.replyWithTyping({channel: GENERAL, user: profile.id}, // fake the funk
+							`Welcome to Screeps Slack. :slightly_smiling_face::wave:`);
+					}
+				}
+			)
+		}
 	}catch(e){
 		console.log(e);
 	}
