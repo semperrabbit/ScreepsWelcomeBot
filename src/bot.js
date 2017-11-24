@@ -6,7 +6,7 @@ const welcomeMessage = require(__dirname + '/message.js')
 
 const WHISPER_PERCENT = 0.5; // The likelyhood of whispering in #general
 const GREETINGS = ['Hi', 'Hello', 'Welcome', 'Welcome to Screeps chat'];
-const EMOJIS    = [':slightly_smiling_face::wave:', ':wave:', ':slightly_smiling_face:', ':upside_down_face:', ':upside_down_face::wave:'];
+const EMOJIS    = [':slightly_smiling_face::left_hand_wave:', ':right_hand_wave::slightly_smiling_face', ':upside_down_right_hand_wave::upside_down_face:', ':upside_down_face::upside_down_left_hand_wave:'];
 
 const greeting = ()=>GREETINGS[Math.floor(Math.random()*GREETINGS.length)];
 const emoji    = ()=>EMOJIS   [Math.floor(Math.random()*EMOJIS.length)];
