@@ -32,16 +32,15 @@ controller.on('direct_message', function(bot, message){
 	}catch(e){console.log(e);}
 });
 
-// Users sometimes say, "Thank you for welcoming [username], WelcomeBot"
-controller.hears(/thank[\s\S]+for[\s\S+]welcom[\s\S]+WelcomeBot/i,  ['direct_message', 'direct_mention', 'mention', 'ambient'], function(bot, message){
-	console.log('I heard someone thanking me');
-	bot.replyWithTyping(message, 'You\'re welcome, <@' + message.user + '>. Thank you for thanking me. :smile:');
-});
-
-// Users sometimes say, "go home, WelcomeBot, you're drunk"
-controller.hears(/go\s+home,?[\s\S]?welcomebot,?[\s\S]?you'?re[\s\S]?drunk/i, ['direct_message', 'direct_mention', 'mention', 'ambient'], function(bot, message){
-	bot.replyWithTyping(message, 'I am *not* ducking frunk!! _hiccups_');
-});
+controller.hears('welcomebot', ['direct_mention', 'mention', 'ambient'], function(bot, message){
+	try{
+		if(message.channel != 'C85PY93JA'){
+			bot.startConversationInThread(message, function(err, thread){
+				thread.say('Lets discuss this in <#C85PY93JA|welcomebot-dev> :slightly_smiling_face:');
+			});
+		}
+	} catch(e){console.log(e);}
+})
 
 mBot.startRTM(function(err,bot,payload) {
 	if (err) {
