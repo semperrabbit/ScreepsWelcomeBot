@@ -43,8 +43,7 @@ The community here is usually a friendly and helpful group, but should you run i
 			fields: [
 				{value: '@atavus'},
 				{value: '@daboross'},
-				{value: '@dissi  (community manager)'},
-				{value: '@o4kapuk(community manager)'},
+				{value: '@o4kapuk(developer & community manager)'},
 				{value: '@semperrabbit'},
 			],
 			mrkdwn_in: ['fields'],
