@@ -44,6 +44,7 @@ The community here is usually a friendly and helpful group, but should you run i
 				{value: '@atavus'},
 				{value: '@daboross'},
 				{value: '@o4kapuk(developer & community manager)'},
+				{value: '@Orlet'},
 				{value: '@semperrabbit'},
 			],
 			mrkdwn_in: ['fields'],
