@@ -41,13 +41,13 @@ The community here is usually a friendly and helpful group, but should you run i
 		{
 			title: 'Moderators',
 			fields: [
-				{value: '@atavus'},
-				{value: '@daboross'},
-				{value: '@o4kapuk(developer & community manager)'},
-				{value: '@orlet'},
-				{value: '@semperrabbit'},
+				{value: '<@U1L3CFXL4>'},
+				{value: '<@U1UJH3RGB>'},
+				{value: '<@UCG2CMMPZ>'},
+				{value: '<@U3KN4CJGN>(developer & community manager)'},
+				{value: '<@U1VSERWHF>'},
 			],
-			mrkdwn_in: ['fields'],
+//			mrkdwn_in: ['fields'],
 			color: '#74c8ed',
 		},
 		{
