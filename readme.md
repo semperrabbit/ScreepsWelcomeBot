@@ -9,6 +9,12 @@ It is designed to be a configuration under the [Bots](https://screeps.slack.com/
 - botkit (v0.6.5 or higher)
 
 ### Setup
+https://botkit.ai/docs/v4/provisioning/slack-events-api.html
+
+local dev to expose localhost 
+ngrok http://ngrok.io/
+
+
 #### Create a `Bots `configuration in Slack
 1. Add the [Bots](https://screeps.slack.com/apps/A0F7YS25R-bots) slack app to your workspace
 1. Click on the Bots app under Custom Integrations
