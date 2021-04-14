@@ -1,7 +1,64 @@
+import { SlackBotWorker } from "botbuilder-adapter-slack";
 import { Botkit } from "botkit";
+
+const { GENERAL } = process.env;
+
+const welcomeMessage = require(__dirname + "/../message.js");
+
+const WHISPER_PERCENT = 0.975; // The likelyhood of whispering in #general
+const GREETINGS = ["Hi", "Hello", "Welcome", "Welcome to Screeps chat"];
+const EMOJIS = [
+  ":slightly_smiling_face::left_hand_wave:",
+  ":right_hand_wave::slightly_smiling_face:",
+  ":upside_down_right_hand_wave::upside_down_face:",
+  ":upside_down_face::upside_down_left_hand_wave:"
+];
+
+const greeting = () => GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
+const emoji = () => EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
 
 module.exports = function (controller: Botkit) {
   controller.on("direct_message", async (bot, message) => {
     await bot.reply(message, "I heard a private message");
+  });
+
+  controller.on("team_join", async (bot, event) => {
+    console.log(`Saying hello at ${Date.now()}`);
+    try {
+      // say hello in #general
+      await bot.reply(
+        { channel: GENERAL, user: event.user }, // fake the funk for `message` param
+        { text: `${greeting()}, <@${event.user}>. ${emoji()}`, ephemeral: Math.random() <= WHISPER_PERCENT }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      // DM welcome and rules
+      await (bot as SlackBotWorker).startPrivateConversation(event.user);
+      await (bot as SlackBotWorker).say(welcomeMessage);
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  controller.on("direct_message", async (bot, message) => {
+    try {
+      // reply to any post not in the below `.hears()` in DM with rules
+      await bot.reply(message, welcomeMessage);
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  controller.hears("welcomebot", ["direct_mention", "mention", "ambient"], async (bot, message) => {
+    try {
+      if (message.channel != "C85PY93JA") {
+        await (bot as SlackBotWorker).startConversationInThread(message.channel, message.user, message.ts);
+        await (bot as SlackBotWorker).say("Lets discuss this in <#C85PY93JA|welcomebot-dev> :slightly_smiling_face:");
+      }
+    } catch (e) {
+      console.log(e);
+    }
   });
 };

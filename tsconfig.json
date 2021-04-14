@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "lib": ["esnext"],
-    "target": "es2017",
-    "moduleResolution": "Node",
-    "outDir": "dist",
-    "baseUrl": "src/",
-    "sourceMap": true,
-    "strict": true,
-    "experimentalDecorators": true,
-    "noImplicitReturns": true,
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "removeComments": true,
-    "allowJs": true
+      "lib": ["es2019"],
+      "module": "commonjs",
+      "target": "es2019",
+      "moduleResolution": "node",
+      "types": [
+          "node"
+      ],
+      "typeRoots": [
+          "node_modules/@types"
+      ],
+      "allowJs": true,
+      "outDir": "./dist"
   },
+  "include": [
+      "./src/**/*"
+  ],
   "exclude": [
-    "node_modules"
+      "node_modules"
   ]
 }
