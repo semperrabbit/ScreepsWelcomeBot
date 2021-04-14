@@ -5,9 +5,10 @@
   "description": "This is a WelcomeBot for the Screeps Slack community.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
     "start": "node src/bot.js"
   },
-  "author": "@semperrabbit",
+  "author": "@semperrabbit, thmsn",
   "dependencies": {
     "botbuilder-adapter-slack": "^1.0.4",
     "botbuilder-storage-mongodb": "^0.9.5",
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "eslint": "^7.24.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
   }
 }

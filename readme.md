@@ -11,9 +11,10 @@ It is designed to be a configuration under the [Bots](https://screeps.slack.com/
 ### Setup
 https://botkit.ai/docs/v4/provisioning/slack-events-api.html
 
-local dev to expose localhost 
+local dev to expose localhost
 ngrok http://ngrok.io/
 
+// https://medium.com/@hang.c/create-a-slack-app-with-botkit-typescript-for-aws-lambda-8e0ced9c3d73
 
 #### Create a `Bots `configuration in Slack
 1. Add the [Bots](https://screeps.slack.com/apps/A0F7YS25R-bots) slack app to your workspace
@@ -29,7 +30,7 @@ ngrok http://ngrok.io/
 #### Run locally
 1. Get the code
     * Clone this repo and run `npm install`
-    * If you edit this for another slack, you will need to edit your message in [message.js](https://github.com/semperrabbit/ScreepsWelcomeBot/blob/master/src/message.js). 
+    * If you edit this for another slack, you will need to edit your message in [message.js](https://github.com/semperrabbit/ScreepsWelcomeBot/blob/master/src/message.js).
 1. Set values in `.env` (copy `.env.sample`):
 	* `SCOPE`: **Do not edit this entry.** These are the required permissions to operate.
     * `TOKEN`: Your bot's `xoxb-` token (available on the edit configuration page)
@@ -52,10 +53,10 @@ ngrok http://ngrok.io/
 The bot will show a log of all the RTM actions, based off of the default logging in BotKit.
 
     U:\profile\Documents\GitHub\ScreepsWelcomeBot>npm start
-    
+
     > ScreepsWelcomeBot@1.0.0 start U:\profile\Documents\GitHub\ScreepsWelcomeBot
     > node src/bot.js
-    
+
     Initializing Botkit v0.6.5
     info: ** No persistent storage method specified! Data may be lost when process shuts down.
     info: ** API CALL: https://slack.com/api/rtm.connect
