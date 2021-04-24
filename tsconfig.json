@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+      "lib": ["es2019"],
+      "module": "commonjs",
+      "target": "es2019",
+      "moduleResolution": "node",
+      "types": [
+          "node"
+      ],
+      "typeRoots": [
+          "node_modules/@types"
+      ],
+      "allowJs": true,
+      "outDir": "./dist"
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
+}
